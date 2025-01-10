@@ -18,6 +18,8 @@ public class LobbySelection : MonoBehaviour
     [SerializeField] private TMP_InputField createRoomName = null;
     [SerializeField] private Toggle privateRoomToggle = null;
     [SerializeField] private TMP_Text playerNameDisplay = null;
+    [SerializeField] private Slider playerCountSlider = null;
+    [SerializeField] private TMP_Text playerCountText = null;
 
     private int gameModeOption;
     private string gameChoice;
@@ -27,6 +29,9 @@ public class LobbySelection : MonoBehaviour
     [SerializeField] private PlayerData playerDataPrefab = null;
 
     void Start() {
+        playerCountSlider.value = 2;
+        playerCountText.text = "Player Limit: 2";
+
         joinPrivateMenu.SetActive(false);
         createRoomMenu.SetActive(false);
 
@@ -61,6 +66,10 @@ public class LobbySelection : MonoBehaviour
                 gameChoice = "Plane Team";
                 break;
         }
+    }
+
+    public void OnPlayerCountChange() {
+        playerCountText.text = $"Players Limit: {playerCountSlider.value}";
     }
 
     public void OnJoinModeChange() {
@@ -146,7 +155,7 @@ public class LobbySelection : MonoBehaviour
         {
             GameMode = GameMode.Host,
             SessionName = sessionName,
-            PlayerCount = 3,
+            PlayerCount = (int)playerCountSlider.value,
             
             SessionProperties = new Dictionary<string, SessionProperty>
             {
