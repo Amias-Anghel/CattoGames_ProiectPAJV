@@ -13,6 +13,11 @@ public class OnServerDisconect : MonoBehaviour, INetworkRunnerCallbacks
         SceneManager.LoadScene("RoomMenu");
     }
 
+    public void OnSessionListUpdated(NetworkRunner runner, List<SessionInfo> sessionList)
+    {
+    
+    }
+
     public void OnConnectedToServer(NetworkRunner runner)
     {
         
@@ -89,11 +94,6 @@ public class OnServerDisconect : MonoBehaviour, INetworkRunnerCallbacks
     }
 
     public void OnSceneLoadStart(NetworkRunner runner)
-    {
-        
-    }
-
-    public void OnSessionListUpdated(NetworkRunner runner, List<SessionInfo> sessionList)
     {
         
     }

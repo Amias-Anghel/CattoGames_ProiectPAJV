@@ -19,7 +19,7 @@ public class LobbyHostOptions : NetworkBehaviour
     public override void Spawned() {
         _changeDetector = GetChangeDetector(ChangeDetector.Source.SimulationState);
 
-        roomName.text = $"Room name: {Runner.SessionInfo.Name}";
+        roomName.text = $"RoomID: {Runner.SessionInfo.Name}";
         GAME = (string)Runner.SessionInfo.Properties["game"];
         gameModeDropDown.value = GAME.ToString().CompareTo("Treat Collector") == 0 ? 0 : 1;
 
