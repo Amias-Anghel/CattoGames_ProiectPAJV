@@ -5,7 +5,22 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/SampleScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/Luncher.unity
+    guid: 6a4d63c76eea02b4a92dd70a419bb991
+  - enabled: 1
+    path: Assets/Scenes/RoomMenu.unity
+    guid: 13e7518555effe74ebfa0e517d09a82f
+  - enabled: 1
+    path: Assets/Scenes/Lobby.unity
+    guid: 30ef8d703ab323342a7307e761f14a80
+  - enabled: 1
+    path: Assets/Scenes/CollectGame.unity
+    guid: c467bbaf7db22f34f84bcb9f54833afd
+  - enabled: 1
+    path: Assets/Scenes/PlaneGame.unity
+    guid: 306b41f0ce13e4c45841d9c558e6a6f4
   m_configObjects: {}
