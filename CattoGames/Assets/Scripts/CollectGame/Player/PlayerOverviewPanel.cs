@@ -16,20 +16,19 @@ public class PlayerOverviewPanel : MonoBehaviour
     private Dictionary<PlayerRef, PlayerDataNetworkedCollect> _playerUpdateDisplay = new Dictionary<PlayerRef, PlayerDataNetworkedCollect>();
 
 
-    // private Animator animator;
-    // private bool openLeaderboard;
+    [SerializeField] private Animator animator;
+    private bool openLeaderboard;
 
-    // void Start() {
-    //     animator = GetComponent<Animator>();
-    //     openLeaderboard = false;
-    // }
+    void Start() {
+        openLeaderboard = false;
+    }
 
-    // void Update() {
-    //     if(Input.GetKeyDown(KeyCode.Tab)) {
-    //         openLeaderboard = !openLeaderboard;
-    //         animator.SetBool("open", openLeaderboard);
-    //     }
-    // }
+    void Update() {
+        if(Input.GetKeyDown(KeyCode.Tab)) {
+            openLeaderboard = !openLeaderboard;
+            animator.SetBool("open", openLeaderboard);
+        }
+    }
 
     // Creates a new Overview Entry
     public void AddEntry(PlayerRef playerRef, PlayerDataNetworkedCollect playerDataNetworked)

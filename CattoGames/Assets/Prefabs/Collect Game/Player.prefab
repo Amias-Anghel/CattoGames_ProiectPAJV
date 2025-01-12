@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2780701023824809118}
   - component: {fileID: 5856490562753587762}
   - component: {fileID: 6419304853383566336}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Visuals
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -117,7 +117,7 @@ GameObject:
   - component: {fileID: 3950332140947392087}
   - component: {fileID: 172662049617731516}
   - component: {fileID: 27415711873650900}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -193,7 +193,7 @@ GameObject:
   - component: {fileID: 6818729426353729043}
   - component: {fileID: 4837150755806386997}
   - component: {fileID: 3842100796821107550}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -294,7 +294,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5512143701494973743}
   - component: {fileID: 7513882209530647815}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Slider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -388,9 +388,9 @@ GameObject:
   - component: {fileID: 4380114560492006724}
   - component: {fileID: 5508274199980637101}
   - component: {fileID: 1270933265899569711}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -456,7 +456,7 @@ Rigidbody2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 8
   m_Interpolate: 1
   m_SleepingMode: 1
   m_CollisionDetection: 1
@@ -554,10 +554,10 @@ MonoBehaviour:
   _playerRadius: 1
   _damageCollisionLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 128
   _collectCollisionLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
 --- !u!114 &1270933265899569711
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -582,7 +582,7 @@ GameObject:
   - component: {fileID: 7958713611385180726}
   - component: {fileID: 7748461261560323958}
   - component: {fileID: 3248834930906670622}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -183,7 +183,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 10
+  orthographic size: 15
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -443,7 +443,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.11004639, y: 0.000061035156}
+  m_AnchoredPosition: {x: 0.11010742, y: 0.000061035156}
   m_SizeDelta: {x: -0.21985, y: -0.00012207}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &927637772
@@ -554,6 +554,8 @@ GameObject:
   - component: {fileID: 941819560}
   - component: {fileID: 941819559}
   - component: {fileID: 941819561}
+  - component: {fileID: 941819562}
+  - component: {fileID: 941819563}
   m_Layer: 0
   m_Name: Spawner
   m_TagString: Untagged
@@ -579,6 +581,8 @@ MonoBehaviour:
   NestedObjects: []
   NetworkedBehaviours:
   - {fileID: 941819561}
+  - {fileID: 941819562}
+  - {fileID: 941819563}
   ForceRemoteRenderTimeframe: 0
 --- !u!4 &941819560
 Transform:
@@ -613,6 +617,34 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _playerNetworkPrefab:
     RawGuidValue: 8f02ad74ccfa75349a33f4788df3176a
+--- !u!114 &941819562
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 941819558}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4830e623114b38842bdf43a00c665f66, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eggPrefab:
+    RawGuidValue: 6058b5a587d60c248ae251cee7c5b02b
+--- !u!114 &941819563
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 941819558}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 843a5d8be80f3e5439396d3a82db1cdb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damagePrefab:
+    RawGuidValue: f3fb7865bc35a054ba56e6cbc2296259
 --- !u!1 &1025513890
 GameObject:
   m_ObjectHideFlags: 0
@@ -761,6 +793,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playerOverviewEntryPrefab: {fileID: 7626908896610702387, guid: 770cc36515c3b8546b50fdf42c9974ab, type: 3}
+  animator: {fileID: 1661920880}
 --- !u!1 &1661920875
 GameObject:
   m_ObjectHideFlags: 0
@@ -773,6 +806,7 @@ GameObject:
   - component: {fileID: 1661920878}
   - component: {fileID: 1661920877}
   - component: {fileID: 1661920879}
+  - component: {fileID: 1661920880}
   m_Layer: 5
   m_Name: Panel
   m_TagString: Untagged
@@ -863,6 +897,27 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!95 &1661920880
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1661920875}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 458a0bd4cd201204e9f24f34131cdc25, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &2087996815
 GameObject:
   m_ObjectHideFlags: 0

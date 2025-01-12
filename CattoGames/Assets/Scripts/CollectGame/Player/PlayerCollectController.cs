@@ -20,6 +20,7 @@ public class PlayerCollectController : NetworkBehaviour
     private GameStateControllerCollect gameStateController;
 
     [Networked] private NetworkBool _isAlive { get; set; }
+    [Networked] private NetworkBool _takeDamage { get; set; }
 
     public override void Spawned()
     {
@@ -46,39 +47,40 @@ public class PlayerCollectController : NetworkBehaviour
 
         _lagCompensatedHits.SortDistance();
 
-        // NetworkedEgg egg = _lagCompensatedHits[0].GameObject.GetComponent<NetworkedEgg>();
+        Collectable collectable = _lagCompensatedHits[0].GameObject.GetComponent<Collectable>();
 
-        // egg.CollectEgg(Object.InputAuthority);
+        collectable.Collect(Object.InputAuthority);
 
         return true;
     }
 
-    // Check damage zone collision using a lag compensated OverlapSphere
-    private bool CheckDamageZoneCollision()
+    public void Call_RPC_CollisionDetected(bool takingDamage)
     {
-        _lagCompensatedHits.Clear();
+        if (Object != null && Object.HasInputAuthority) {
+            RPC_CollisionDetected(takingDamage);
+        }
+    }
 
-        int count = Runner.LagCompensation.OverlapSphere(_rigidbody.position, _playerRadius,
-            Object.InputAuthority, _lagCompensatedHits, _damageCollisionLayer.value);
 
-        if (count <= 0) return false;
+    [Rpc(RpcSources.InputAuthority, RpcTargets.StateAuthority)]
+    public void RPC_CollisionDetected(bool takingDamage)
+    {
+        _takeDamage = takingDamage;
+        Debug.Log("Collision detected with player across network.");
+    }
 
-        _lagCompensatedHits.SortDistance();
+    private void CheckDamageZoneCollision() {
+        if (!Object.HasStateAuthority) return;
 
-        // DamageZone zone = _lagCompensatedHits[0].GameObject.GetComponent<DamageZone>();
+        if (_takeDamage) {
+            if (Runner.TryGetPlayerObject(Object.InputAuthority, out var playerNetworkObject)) {
+                playerNetworkObject.GetComponent<PlayerDataNetworkedCollect>().TakeDamage();
 
-        // if(zone.GivesDamage()) {
-        //     // remove life
-        //     if (Runner.TryGetPlayerObject(Object.InputAuthority, out var playerNetworkObject)) {
-        //         playerNetworkObject.GetComponent<PlayerDataNetworkedCollect>().TakeDamage();
-
-        //         if (!playerNetworkObject.GetComponent<PlayerDataNetworkedCollect>().IsAlive()) {
-        //             PlayerDied();
-        //         }
-        //     }
-        // }
-
-        return true;
+                if (!playerNetworkObject.GetComponent<PlayerDataNetworkedCollect>().IsAlive()) {
+                    PlayerDied();
+                }
+            }
+        }
     }
 
     private void PlayerDied() {

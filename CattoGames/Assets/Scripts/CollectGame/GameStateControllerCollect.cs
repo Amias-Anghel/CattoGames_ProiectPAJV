@@ -76,8 +76,8 @@ public class GameStateControllerCollect : NetworkBehaviour
         if (!Object.HasStateAuthority) return;
 
         FindObjectOfType<PlayerSpawnerCollect>().StartPlayerSpawner(this);
-        // FindObjectOfType<EggSpawner>().StartEggSpawner();
-        // FindObjectOfType<DamageZoneSpawner>().StartDamageZoneSpawner();
+        FindObjectOfType<CollectableSpawner>().StartCollectableSpawn();
+        FindObjectOfType<DamageSpawner>().StartDamageZoneSpawner();
 
         _gameState = GameState.Running;
     }
