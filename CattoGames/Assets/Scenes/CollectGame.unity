@@ -643,8 +643,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 843a5d8be80f3e5439396d3a82db1cdb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damagePrefab:
-    RawGuidValue: f3fb7865bc35a054ba56e6cbc2296259
+  damagePrefabs:
+  - RawGuidValue: 6aea36e59a790694991b94f4695041c7
+  - RawGuidValue: 9ee9915861f6d5646b8fc562aa773274
+  - RawGuidValue: e049216cf152a5c49b720ace8d8e857b
 --- !u!1 &1025513890
 GameObject:
   m_ObjectHideFlags: 0

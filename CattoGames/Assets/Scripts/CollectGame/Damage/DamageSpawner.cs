@@ -3,7 +3,7 @@ using Fusion;
 
 public class DamageSpawner : NetworkBehaviour
 {
-    [SerializeField] private NetworkPrefabRef damagePrefab = NetworkPrefabRef.Empty;
+    [SerializeField] private NetworkPrefabRef[] damagePrefabs;
     private float _screenBoundaryX = 0.0f;
     private float _screenBoundaryY = 0.0f;
     private TickTimer _spawnDelay;
@@ -35,9 +35,9 @@ public class DamageSpawner : NetworkBehaviour
     private void SpawnZones() {
         if(!_spawnDelay.Expired(Runner)) return;
 
-        for(int i = 0; i < 5; i++) {
+        // for(int i = 0; i < 5; i++) {
             SpawnDamageZone();
-        }
+        // }
         SetSpawnDelay();
     }
 
@@ -50,6 +50,11 @@ public class DamageSpawner : NetworkBehaviour
 
         position -= position.normalized * 0.2f;
 
-        Runner.Spawn(damagePrefab, position, Quaternion.identity);
+        float randomAngle = Random.Range(0f, 360f);
+        Quaternion randomRotation = Quaternion.Euler(0f, 0f, randomAngle);
+
+        int prefab = Random.Range(0, damagePrefabs.Length);
+
+        Runner.Spawn(damagePrefabs[prefab], position, randomRotation);
     }
 }
