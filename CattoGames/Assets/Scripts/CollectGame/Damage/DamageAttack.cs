@@ -23,7 +23,6 @@ public class DamageAttack : NetworkBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            Debug.Log("Player entered the trigger area.");
             collision.GetComponent<PlayerCollectController>().Call_RPC_CollisionDetected(true); 
         }
     }
@@ -32,7 +31,6 @@ public class DamageAttack : NetworkBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            Debug.Log("Player exited the trigger area.");
             collision.GetComponent<PlayerCollectController>().Call_RPC_CollisionDetected(false);
         }
     }

@@ -91,8 +91,8 @@ public class GameStateControllerCollect : NetworkBehaviour
         }
 
         if (_timer.ExpiredOrNotRunning(Runner) == false) return;
-
-        Runner.Shutdown();        
+ 
+        Runner.Shutdown();
     }
 
     // Called from the ShipController when it hits an asteroid
