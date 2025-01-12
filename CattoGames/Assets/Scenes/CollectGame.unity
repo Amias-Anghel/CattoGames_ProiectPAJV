@@ -629,7 +629,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4830e623114b38842bdf43a00c665f66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  eggPrefab:
+  collectablePrefab:
     RawGuidValue: 6058b5a587d60c248ae251cee7c5b02b
 --- !u!114 &941819563
 MonoBehaviour:

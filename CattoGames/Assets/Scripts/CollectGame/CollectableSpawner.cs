@@ -4,7 +4,7 @@ using System;
 
 public class CollectableSpawner : NetworkBehaviour
 {
-    [SerializeField] private NetworkPrefabRef eggPrefab = NetworkPrefabRef.Empty;
+    [SerializeField] private NetworkPrefabRef collectablePrefab = NetworkPrefabRef.Empty;
 
     private float _screenBoundaryX = 0.0f;
     private float _screenBoundaryY = 0.0f;
@@ -33,7 +33,7 @@ public class CollectableSpawner : NetworkBehaviour
 
         position -= position.normalized * 0.2f;
         if (Runner != null) {
-            Runner.Spawn(eggPrefab, position, Quaternion.identity);
+            Runner.Spawn(collectablePrefab, position, Quaternion.identity);
         }
     }
 }

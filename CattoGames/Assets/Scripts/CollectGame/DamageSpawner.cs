@@ -12,7 +12,7 @@ public class DamageSpawner : NetworkBehaviour
     public void StartDamageZoneSpawner() {
         if (!Object.HasStateAuthority) return;
 
-       _spawnDelay = TickTimer.CreateFromSeconds(Runner, 0.5f);
+       SetSpawnDelay();
         
         _screenBoundaryX = Camera.main.orthographicSize * Camera.main.aspect;
         _screenBoundaryY = Camera.main.orthographicSize;
