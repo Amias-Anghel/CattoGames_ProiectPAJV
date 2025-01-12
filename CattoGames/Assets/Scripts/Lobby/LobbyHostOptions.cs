@@ -60,8 +60,17 @@ public class LobbyHostOptions : NetworkBehaviour
         }
     }
 
-    public void DebugProps() {
-        Debug.Log(Runner.SessionInfo.Properties["game"]);
+    public async void StartGame() {
+        if (Object.HasStateAuthority) {
+            switch(GAME.ToString()) {
+                case "Treat Collector":
+                    await FindObjectOfType<NetworkRunner>().LoadScene("CollectGame");
+                    break;
+                case "Plane Team":
+                    await FindObjectOfType<NetworkRunner>().LoadScene("PlaneGame");
+                    break;
+            }
+        }
     }
 
     public void LeaveLobby() {
