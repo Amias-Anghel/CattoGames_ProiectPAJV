@@ -15,7 +15,7 @@ public class DamageCross : NetworkBehaviour
         if (!Object.HasStateAuthority) return;
         index = 0;
         spawning = true;
-        SetSpawnDelay();
+        _spawnDelay = TickTimer.CreateFromSeconds(Runner, 0.4f);
     }
 
 
@@ -34,10 +34,10 @@ public class DamageCross : NetworkBehaviour
     private void SpawnZones() {
         if(!_spawnDelay.Expired(Runner)) return;
         
-        SpawnDamageZone(transform.GetChild(0).GetChild(index).position);
-        SpawnDamageZone(transform.GetChild(1).GetChild(index).position);
-        SpawnDamageZone(transform.GetChild(2).GetChild(index).position);
-        SpawnDamageZone(transform.GetChild(3).GetChild(index).position);
+        for (int i = 0; i < transform.childCount; i++) {
+            SpawnDamageZone(transform.GetChild(i).GetChild(index).position);
+        }
+
         index++;
         if (transform.GetChild(0).childCount <= index) {
             spawning = false;

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Fusion;
 using TMPro;
 using UnityEngine;
@@ -26,6 +27,16 @@ public class LobbyHostOptions : NetworkBehaviour
         if (!Object.HasStateAuthority) {
             startGameButton.gameObject.SetActive(false);
             gameModeDropDown.interactable = false;
+        } else {
+            startGameButton.interactable = false;
+        }
+    }
+
+    public override void FixedUpdateNetwork() {
+        if (!Object.HasStateAuthority) return;
+
+        if (Runner.ActivePlayers.Count() >= 2) {
+            startGameButton.interactable = true;
         }
     }
 

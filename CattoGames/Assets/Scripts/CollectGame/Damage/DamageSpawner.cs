@@ -14,8 +14,8 @@ public class DamageSpawner : NetworkBehaviour
 
        SetSpawnDelay();
         
-        _screenBoundaryX = Camera.main.orthographicSize * Camera.main.aspect;
-        _screenBoundaryY = Camera.main.orthographicSize;
+        _screenBoundaryX = Camera.main.orthographicSize * Camera.main.aspect / 2;
+        _screenBoundaryY = Camera.main.orthographicSize / 2;
     }
 
     public override void FixedUpdateNetwork()
