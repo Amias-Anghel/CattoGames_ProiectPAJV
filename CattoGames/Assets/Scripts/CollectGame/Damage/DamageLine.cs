@@ -14,7 +14,7 @@ public class DamageLine : NetworkBehaviour
         if (!Object.HasStateAuthority) return;
         index = 0;
         spawning = true;
-        SetSpawnDelay();
+        _spawnDelay = TickTimer.CreateFromSeconds(Runner, 0.4f);
     }
 
 
