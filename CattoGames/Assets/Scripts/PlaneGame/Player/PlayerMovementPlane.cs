@@ -3,7 +3,7 @@ using Fusion.Addons.Physics;
 using UnityEngine;
 public class PlayerMovementPlane :NetworkBehaviour
 {
-    [SerializeField] private float _movementSpeed = 20.0f;
+    [SerializeField] private float _movementSpeed = 10.0f;
 
     // Local Runtime references
     private Rigidbody2D _rigidbody = null; 

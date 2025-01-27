@@ -4,19 +4,15 @@ using Fusion;
 public class DamageAttack : NetworkBehaviour
 {
     [Networked] private TickTimer _despawnTimer { get; set; }
-    [Networked] private TickTimer _damageTimer { get; set; }
     [Networked] private NetworkBool expired { get; set; }
-    [Networked] private NetworkBool givesDamage { get; set; }
 
     public override void Spawned()
     {
         expired = false;
-        givesDamage = false;
 
         if (!Object.HasStateAuthority) return;
 
         _despawnTimer = TickTimer.CreateFromSeconds(Runner, 4f);
-        _damageTimer = TickTimer.CreateFromSeconds(Runner, 2f);
     }
 
     void OnTriggerEnter2D(Collider2D collision)

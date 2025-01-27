@@ -432,7 +432,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93a625e6e4dd304418334a730fce8b0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerRadius: 1
+  _playerRadius: 5
   _damageCollisionLayer:
     serializedVersion: 2
     m_Bits: 128
@@ -508,7 +508,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: d3da50e50aec70746b8a871e65fcb85d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
