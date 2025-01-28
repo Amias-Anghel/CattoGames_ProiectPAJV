@@ -16,6 +16,8 @@ public class PlayerControllerPlane : NetworkBehaviour
     private GameStateControllerPlane gameStateController;
     private PlayerDataNetworkedPlane playerDataNetworkedPlane;
 
+    [Networked] private NetworkBool _takeDamage { get; set; }
+
     public override void Spawned()
     {
         gameStateController = FindObjectOfType<GameStateControllerPlane>();
@@ -32,16 +34,32 @@ public class PlayerControllerPlane : NetworkBehaviour
     private void CheckDamageZoneCollision() {
         if (!Object.HasStateAuthority) return;
 
-        _lagCompensatedHits.Clear();
+        if (_takeDamage) {
+            if (Runner.TryGetPlayerObject(Object.InputAuthority, out var playerNetworkObject)) {
+                playerNetworkObject.GetComponent<PlayerDataNetworkedPlane>().TakeDamage();
 
-        int count = Runner.LagCompensation.OverlapSphere(_rigidbody.position, _playerRadius,
-            Object.InputAuthority, _lagCompensatedHits, _damageCollisionLayer.value);
-
-        if (count <= 0) return;
-
-        PlayerDied();
+                if (!playerNetworkObject.GetComponent<PlayerDataNetworkedPlane>().Alive) {
+                    PlayerDied();
+                }
+            }
+        }
 
         return;
+    }
+
+
+    public void Call_RPC_CollisionDetected(bool takingDamage)
+    {
+        if (Object != null && Object.HasInputAuthority) {
+            RPC_CollisionDetected(takingDamage);
+        }
+    }
+
+    [Rpc(RpcSources.InputAuthority, RpcTargets.StateAuthority)]
+    public void RPC_CollisionDetected(bool takingDamage)
+    {
+        _takeDamage = takingDamage;
+        Debug.Log("Collision detected with player across network.");
     }
 
     public bool AcceptInput() {
