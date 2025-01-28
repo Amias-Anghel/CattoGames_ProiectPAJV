@@ -84,7 +84,7 @@ public class GameStateControllerPlane : NetworkBehaviour
 
     private void UpdateEndingDisplay()
     {
-        if (Runner.TryFindBehaviour(_winner, out PlayerDataNetworkedCollect playerData)) {
+        if (Runner.TryFindBehaviour(_winner, out PlayerDataNetworkedPlane playerData)) {
             screenText.text = $"{playerData.NickName} won.\nDisconecting...";
         } else {
             screenText.text  ="Disconecting...";
@@ -92,7 +92,7 @@ public class GameStateControllerPlane : NetworkBehaviour
 
         if (_timer.ExpiredOrNotRunning(Runner) == false) return;
  
-        // Runner.Shutdown();
+        Runner.Shutdown();
     }
 
     // Called from the ShipController when it hits an asteroid
