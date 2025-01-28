@@ -15,6 +15,7 @@ public class GameStateControllerPlane : NetworkBehaviour
     }
 
     [SerializeField] private TMP_Text screenText;
+    
 
     [Networked] private GameState _gameState { get; set; }
 
@@ -76,8 +77,7 @@ public class GameStateControllerPlane : NetworkBehaviour
         if (!Object.HasStateAuthority) return;
 
         FindObjectOfType<PlayerSpawnerPlane>().StartPlayerSpawner(this);
-        // FindObjectOfType<CollectableSpawner>().StartCollectableSpawn();
-        // FindObjectOfType<DamageSpawner>().StartDamageZoneSpawner();
+        FindObjectOfType<DamageWallSpawner>().StartWallSpawner();
 
         _gameState = GameState.Running;
     }
@@ -92,7 +92,7 @@ public class GameStateControllerPlane : NetworkBehaviour
 
         if (_timer.ExpiredOrNotRunning(Runner) == false) return;
  
-        Runner.Shutdown();
+        // Runner.Shutdown();
     }
 
     // Called from the ShipController when it hits an asteroid
