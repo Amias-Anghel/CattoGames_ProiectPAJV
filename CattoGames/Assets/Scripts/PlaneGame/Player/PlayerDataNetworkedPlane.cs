@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class PlayerDataNetworkedPlane : NetworkBehaviour
 {    
     [SerializeField] private TMP_Text playerName;
+    [SerializeField] private SpriteRenderer visual;
     private ChangeDetector _changeDetector;
 
     [HideInInspector]
@@ -17,12 +18,18 @@ public class PlayerDataNetworkedPlane : NetworkBehaviour
     [Networked]
     public NetworkBool Alive { get; private set; }
 
+    [HideInInspector] [Networked]
+    public NetworkString<_16> AvatarId { get; private set; }
+
     public override void Spawned()
     {
         if (Object.HasInputAuthority)
         {
             var nickName = FindObjectOfType<PlayerData>().GetNickName();
             RpcSetNickName(nickName);
+
+            var avatarId = FindObjectOfType<PlayerData>().getAvatarID();
+            RpcSetAvatarId(avatarId);
         }
 
         if (Object.HasStateAuthority)
@@ -43,6 +50,9 @@ public class PlayerDataNetworkedPlane : NetworkBehaviour
                 case nameof(NickName):
                     UpdateDisplayName(NickName.ToString());
                     break;
+                case nameof(AvatarId):
+                    UpdatePlayerVisual(AvatarId.ToString());
+                    break;
             }
         }
     }
@@ -55,6 +65,10 @@ public class PlayerDataNetworkedPlane : NetworkBehaviour
         playerName.text = newDisplayName;
     }
 
+    public void UpdatePlayerVisual(string avatarId) {
+        visual.sprite = SpriteManager.getInstance().getSprite(avatarId).planeSprite;
+    }
+
 
     // RPC used to send player information to the Host
     [Rpc(sources: RpcSources.InputAuthority, targets: RpcTargets.StateAuthority)]
@@ -62,5 +76,12 @@ public class PlayerDataNetworkedPlane : NetworkBehaviour
     {
         if (string.IsNullOrEmpty(nickName)) return;
         NickName = nickName;
+    }
+
+    [Rpc(sources: RpcSources.InputAuthority, targets: RpcTargets.StateAuthority)]
+    private void RpcSetAvatarId(string avatarId)
+    {
+        if (string.IsNullOrEmpty(avatarId)) return;
+        AvatarId = avatarId;
     }
 }

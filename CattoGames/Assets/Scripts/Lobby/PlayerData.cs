@@ -25,7 +25,6 @@ public class PlayerData : MonoBehaviour
         ud = UserData.getInstance();
         _nickName = ud.playerProfile.DisplayName;
         avatarID = SpriteManager.getInstance().getSelectedAvatar().ID;
-        // avatarID = ud.userData["avatarID"].Value;
         Debug.Log(avatarID);
     }
 

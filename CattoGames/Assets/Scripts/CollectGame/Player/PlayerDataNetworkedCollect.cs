@@ -7,6 +7,7 @@ public class PlayerDataNetworkedCollect : NetworkBehaviour
 {
     [SerializeField] private Slider life = null;
     [SerializeField] private TMP_Text playerName;
+    [SerializeField] private SpriteRenderer visual;
     private PlayerOverviewPanel _overviewPanel = null;
     private ChangeDetector _changeDetector;
 
@@ -23,6 +24,8 @@ public class PlayerDataNetworkedCollect : NetworkBehaviour
     public float Life { get; private set; }
 
     
+    [HideInInspector] [Networked]
+    public NetworkString<_16> AvatarId { get; private set; }
 
     public override void Spawned()
     {
@@ -30,6 +33,8 @@ public class PlayerDataNetworkedCollect : NetworkBehaviour
         {
             var nickName = FindObjectOfType<PlayerData>().GetNickName();
             RpcSetNickName(nickName);
+             var avatarId = FindObjectOfType<PlayerData>().getAvatarID();
+            RpcSetAvatarId(avatarId);
         }
 
         if (Object.HasStateAuthority)
@@ -63,6 +68,9 @@ public class PlayerDataNetworkedCollect : NetworkBehaviour
                 case nameof(Life):
                     life.value = Life;
                     break;
+                case nameof(AvatarId):
+                    UpdatePlayerVisual(AvatarId.ToString());
+                    break;
             }
         }
     }
@@ -85,6 +93,10 @@ public class PlayerDataNetworkedCollect : NetworkBehaviour
         playerName.text = newDisplayName;
     }
 
+    public void UpdatePlayerVisual(string avatarId) {
+        visual.sprite = SpriteManager.getInstance().getSprite(avatarId).avatarSprite;
+    }
+
     public bool IsAlive() {
         return Life > 0;
     }
@@ -95,5 +107,12 @@ public class PlayerDataNetworkedCollect : NetworkBehaviour
     {
         if (string.IsNullOrEmpty(nickName)) return;
         NickName = nickName;
+    }
+
+    [Rpc(sources: RpcSources.InputAuthority, targets: RpcTargets.StateAuthority)]
+    private void RpcSetAvatarId(string avatarId)
+    {
+        if (string.IsNullOrEmpty(avatarId)) return;
+        AvatarId = avatarId;
     }
 }
