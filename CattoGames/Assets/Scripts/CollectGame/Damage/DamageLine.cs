@@ -14,7 +14,7 @@ public class DamageLine : NetworkBehaviour
         if (!Object.HasStateAuthority) return;
         index = 0;
         spawning = true;
-        _spawnDelay = TickTimer.CreateFromSeconds(Runner, 0.4f);
+        _spawnDelay = TickTimer.CreateFromSeconds(Runner, 1.0f);
     }
 
 
@@ -34,6 +34,7 @@ public class DamageLine : NetworkBehaviour
         if(!_spawnDelay.Expired(Runner)) return;
         
         SpawnDamageZone(transform.GetChild(index).position);
+        
         index++;
         if (transform.childCount <= index) {
             spawning = false;

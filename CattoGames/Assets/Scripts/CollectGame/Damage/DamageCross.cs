@@ -15,7 +15,7 @@ public class DamageCross : NetworkBehaviour
         if (!Object.HasStateAuthority) return;
         index = 0;
         spawning = true;
-        _spawnDelay = TickTimer.CreateFromSeconds(Runner, 0.4f);
+        _spawnDelay = TickTimer.CreateFromSeconds(Runner, 1.0f);
     }
 
 

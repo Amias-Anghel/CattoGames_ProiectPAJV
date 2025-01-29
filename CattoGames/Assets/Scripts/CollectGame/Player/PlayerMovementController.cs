@@ -27,7 +27,7 @@ public class PlayerMovementController : NetworkBehaviour
         _rigidbody = GetComponent<Rigidbody2D>();
         _playerpController = GetComponent<PlayerCollectController>();
         playerVisuals = transform.GetChild(0).gameObject;
-        playerAnimator = playerVisuals.GetComponent<Animator>();
+        playerAnimator = playerVisuals.transform.GetChild(0).GetComponent<Animator>();
         _changeDetector = GetChangeDetector(ChangeDetector.Source.SimulationState);
 
         visualsScale_x = playerVisuals.transform.localScale.x;
@@ -73,12 +73,13 @@ public class PlayerMovementController : NetworkBehaviour
         if (input.movement != Vector2.zero) {
             facingLeft = input.movement.x <= 0;
         }
-            
+
         moving = input.movement != Vector2.zero;
     }
 
 
     private void ApplyFlip() {
+        Debug.Log(facingLeft);
         Vector3 currentScale = playerVisuals.transform.localScale;
         currentScale.x = facingLeft ? -visualsScale_x : visualsScale_x;
         playerVisuals.transform.localScale = currentScale;
