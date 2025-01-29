@@ -52,7 +52,6 @@ public class LobbySelection : MonoBehaviour
         if (playerData == null)
         {
             playerData = Instantiate(playerDataPrefab);
-          //  playerData.setAvatar();
         }
 
         playerNameDisplay.text = $"Joining as {playerData.GetNickName()}";

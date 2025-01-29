@@ -68,6 +68,9 @@ public class PlayerLobby : NetworkBehaviour
                 case nameof(PlayerName):
                     SetPlayerName(PlayerName.ToString());
                     break;
+                case nameof(PlayerProfile):
+                    SetPlayerProfile(PlayerProfile.ToString());
+                    break;
             }
         }
     }
