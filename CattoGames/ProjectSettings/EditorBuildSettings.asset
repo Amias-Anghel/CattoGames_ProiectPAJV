@@ -9,7 +9,7 @@ EditorBuildSettings:
     path: Assets/Scenes/SampleScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
-    path: Assets/Scenes/Luncher.unity
+    path: Assets/Scenes/Launcher.unity
     guid: 6a4d63c76eea02b4a92dd70a419bb991
   - enabled: 1
     path: Assets/Scenes/RoomMenu.unity
@@ -23,4 +23,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/PlaneGame.unity
     guid: 306b41f0ce13e4c45841d9c558e6a6f4
+  - enabled: 1
+    path: Assets/Scenes/MainScreen.unity
+    guid: f9c171090d0b61847821c05f107246eb
   m_configObjects: {}
