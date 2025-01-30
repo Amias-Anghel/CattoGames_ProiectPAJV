@@ -41,4 +41,8 @@ public class ChangeAvatar : MonoBehaviour
         UserManagement.UpdatePlayerData(this.avatarID);
         sm.setSelectedAvatar(this.avatarID);
     }
+
+    public void SetBackgroundToSelected() {
+        background.sprite = sm.getSelectedAvatar().backgroundSprite;
+    }
 }
