@@ -33,7 +33,7 @@ public class DamageLine : NetworkBehaviour
     private void SpawnZones() {
         if(!_spawnDelay.Expired(Runner)) return;
         
-        SpawnDamageZone(transform.GetChild(index).position);
+        SpawnDamageZone(transform.GetChild(index));
         
         index++;
         if (transform.childCount <= index) {
@@ -44,9 +44,8 @@ public class DamageLine : NetworkBehaviour
         SetSpawnDelay();
     }
 
-    private void SpawnDamageZone(Vector3 position)
+    private void SpawnDamageZone(Transform place)
     {
-        // position -= position.normalized;
-        Runner.Spawn(damagePrefab, position, Quaternion.identity);
+        Runner.Spawn(damagePrefab, place.position, place.rotation);
     }
 }

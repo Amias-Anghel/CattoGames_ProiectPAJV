@@ -35,7 +35,7 @@ public class DamageCross : NetworkBehaviour
         if(!_spawnDelay.Expired(Runner)) return;
         
         for (int i = 0; i < transform.childCount; i++) {
-            SpawnDamageZone(transform.GetChild(i).GetChild(index).position);
+            SpawnDamageZone(transform.GetChild(i).GetChild(index));
         }
 
         index++;
@@ -47,9 +47,8 @@ public class DamageCross : NetworkBehaviour
         SetSpawnDelay();
     }
 
-    private void SpawnDamageZone(Vector3 position)
+    private void SpawnDamageZone(Transform place)
     {
-        // position -= position.normalized;
-        Runner.Spawn(damagePrefab, position, Quaternion.identity);
+        Runner.Spawn(damagePrefab, place.position, place.rotation);
     }
 }
