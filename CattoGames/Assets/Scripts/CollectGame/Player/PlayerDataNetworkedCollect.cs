@@ -33,7 +33,7 @@ public class PlayerDataNetworkedCollect : NetworkBehaviour
         {
             var nickName = FindObjectOfType<PlayerData>().GetNickName();
             RpcSetNickName(nickName);
-             var avatarId = FindObjectOfType<PlayerData>().getAvatarID();
+            var avatarId = FindObjectOfType<PlayerData>().getAvatarID();
             RpcSetAvatarId(avatarId);
         }
 
@@ -49,7 +49,8 @@ public class PlayerDataNetworkedCollect : NetworkBehaviour
     
         _overviewPanel.UpdateNickName(Object.InputAuthority, NickName.ToString());
         _overviewPanel.UpdateScore(Object.InputAuthority, Score);
-        
+        _overviewPanel.UpdateAvatar(Object.InputAuthority, AvatarId.ToString());
+
         _changeDetector = GetChangeDetector(ChangeDetector.Source.SimulationState);
     }
     
@@ -69,7 +70,7 @@ public class PlayerDataNetworkedCollect : NetworkBehaviour
                     life.value = Life;
                     break;
                 case nameof(AvatarId):
-                    UpdatePlayerVisual(AvatarId.ToString());
+                    _overviewPanel.UpdateAvatar(Object.InputAuthority, AvatarId.ToString());
                     break;
             }
         }

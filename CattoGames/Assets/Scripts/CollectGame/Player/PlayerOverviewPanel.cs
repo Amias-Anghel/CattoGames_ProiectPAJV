@@ -12,6 +12,7 @@ public class PlayerOverviewPanel : MonoBehaviour
         _playerListEntries = new Dictionary<PlayerRef, TextMeshProUGUI>();
 
     private Dictionary<PlayerRef, string> _playerNickNames = new Dictionary<PlayerRef, string>();
+    private Dictionary<PlayerRef, string> _playerAvatars = new Dictionary<PlayerRef, string>();
     private Dictionary<PlayerRef, int> _playerScores = new Dictionary<PlayerRef, int>();
     private Dictionary<PlayerRef, PlayerDataNetworkedCollect> _playerUpdateDisplay = new Dictionary<PlayerRef, PlayerDataNetworkedCollect>();
 
@@ -46,6 +47,7 @@ public class PlayerOverviewPanel : MonoBehaviour
         _playerScores.Add(playerRef, score);
         _playerListEntries.Add(playerRef, entry);
         _playerUpdateDisplay.Add(playerRef, playerDataNetworked);
+        _playerAvatars.Add(playerRef, playerDataNetworked.AvatarId.ToString());
 
         UpdateEntry(playerRef, entry);
     }
@@ -81,6 +83,14 @@ public class PlayerOverviewPanel : MonoBehaviour
         _playerNickNames[player] = nickName;
         _playerUpdateDisplay[player].UpdateDisplayName(nickName);
         UpdateEntry(player, entry);
+    }
+
+    public void UpdateAvatar(PlayerRef player, string avatarId)
+    {
+        if (_playerListEntries.TryGetValue(player, out var entry) == false) return;
+
+        _playerAvatars[player] = avatarId;
+        _playerUpdateDisplay[player].UpdatePlayerVisual(avatarId);
     }
 
     private void UpdateEntry(PlayerRef player, TextMeshProUGUI entry)

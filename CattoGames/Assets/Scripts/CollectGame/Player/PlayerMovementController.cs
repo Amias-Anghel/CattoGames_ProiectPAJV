@@ -79,7 +79,6 @@ public class PlayerMovementController : NetworkBehaviour
 
 
     private void ApplyFlip() {
-        Debug.Log(facingLeft);
         Vector3 currentScale = playerVisuals.transform.localScale;
         currentScale.x = facingLeft ? -visualsScale_x : visualsScale_x;
         playerVisuals.transform.localScale = currentScale;
