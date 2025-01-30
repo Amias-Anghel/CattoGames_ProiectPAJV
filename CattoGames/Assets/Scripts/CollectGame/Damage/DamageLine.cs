@@ -46,7 +46,7 @@ public class DamageLine : NetworkBehaviour
 
     private void SpawnDamageZone(Vector3 position)
     {
-        position -= position.normalized;
+        // position -= position.normalized;
         Runner.Spawn(damagePrefab, position, Quaternion.identity);
     }
 }
