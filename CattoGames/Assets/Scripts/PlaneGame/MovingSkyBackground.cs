@@ -5,7 +5,7 @@ using UnityEngine;
 public class MovingSkyBackground : MonoBehaviour
 {
     [SerializeField] private float backgroundLenght = 81.9f;
-    private float  _movementSpeed = 100.0f;
+    [SerializeField] private float  _movementSpeed = 100.0f;
     private Rigidbody2D _rigidbody = null; 
     private bool spawnedNext;
 
