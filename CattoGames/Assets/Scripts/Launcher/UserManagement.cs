@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using PlayFab;
 using PlayFab.ClientModels;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEditorInternal;
 using UnityEngine;
@@ -13,7 +14,7 @@ public static class UserManagement
     
 //trebuie facute butoane in unityt 
 // trebuie facut login cu email 
-    public static void LoginWithEmailAddress(string email, string password) {
+    public static void LoginWithEmailAddress(string email, string password, GameObject errorMessage) {
         UserData ud = UserData.getInstance();
         PlayFabClientAPI.LoginWithEmailAddress(new LoginWithEmailAddressRequest() {
             Email = email,
@@ -34,12 +35,14 @@ public static class UserManagement
             ud.startGame();
         }, error => {
             Debug.LogFormat("LoginEmailAddress {0} {1}", error.ErrorMessage, error.Error);
+            errorMessage.SetActive(true);
+            errorMessage.GetComponentInChildren<TextMeshProUGUI>().text = "Register failed! " + error.ErrorMessage.ToString();
         });
     }
 
 
     //optional
-    public static void Register(string email, string password, string username) {
+    public static void Register(string email, string password, string username, GameObject errorMessage) {
         PlayFabClientAPI.RegisterPlayFabUser(new RegisterPlayFabUserRequest(){
             Email = email,
             Password = password,
@@ -48,9 +51,11 @@ public static class UserManagement
         }, result => {
             Debug.LogFormat("Register {0}", result.PlayFabId);
             UpdatePlayerData("1429");
-            LoginWithEmailAddress(email, password);
+            LoginWithEmailAddress(email, password, errorMessage);
         }, error => {
             Debug.LogFormat("Register {0} {1}: {2}, {3}, {4}", error.ErrorMessage, error.Error, email, password, username);
+            errorMessage.SetActive(true);
+            errorMessage.GetComponentInChildren<TextMeshProUGUI>().text = "Register failed! " + error.ErrorMessage.ToString();
         });
     }
 

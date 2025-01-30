@@ -18,6 +18,7 @@ public class LobbySelection : MonoBehaviour
     [SerializeField] private TMP_InputField createRoomName = null;
     [SerializeField] private Toggle privateRoomToggle = null;
     [SerializeField] private TMP_Text playerNameDisplay = null;
+    [SerializeField] private Image playerBackgroundDisplay = null;
     [SerializeField] private Slider playerCountSlider = null;
     [SerializeField] private TMP_Text playerCountText = null;
 
@@ -55,6 +56,7 @@ public class LobbySelection : MonoBehaviour
         }
 
         playerNameDisplay.text = $"Joining as {playerData.GetNickName()}";
+        playerBackgroundDisplay.sprite = SpriteManager.getInstance().getSelectedAvatar().backgroundSprite;
     }
     
     public void OnGameChange() {

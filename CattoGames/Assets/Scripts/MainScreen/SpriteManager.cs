@@ -13,6 +13,7 @@ public struct SpriteItem
     public Sprite profileSprite;
     public Sprite avatarSprite;
     public Sprite planeSprite;
+    public Sprite backgroundSprite;
 }
 public class SpriteManager : MonoBehaviour
 {

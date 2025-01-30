@@ -8,6 +8,7 @@ public class ChangeAvatar : MonoBehaviour
     public Image avatarView;
     public Image profileView;
     public Image planeView;
+    public Image background;
     private string avatarID;
     private UserData ud;
     private SpriteManager sm;
@@ -20,6 +21,7 @@ public class ChangeAvatar : MonoBehaviour
         avatarView.sprite = sm.getSelectedAvatar().avatarSprite;
         profileView.sprite = sm.getSelectedAvatar().profileSprite;
         planeView.sprite = sm.getSelectedAvatar().planeSprite;
+        background.sprite = sm.getSelectedAvatar().backgroundSprite;
     }
 
     // Update is called once per frame
@@ -30,6 +32,8 @@ public class ChangeAvatar : MonoBehaviour
             avatarView.sprite = si.avatarSprite;
             profileView.sprite = si.profileSprite;
             planeView.sprite = si.planeSprite;
+            background.sprite = si.backgroundSprite;
+
             this.avatarID = si.ID;
         }
     }

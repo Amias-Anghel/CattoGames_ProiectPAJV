@@ -11,6 +11,7 @@ public class LoginButton : MonoBehaviour
     private string email;
     private string password;
     public GameObject registerGroup;
+    public GameObject error;
 
     // Start is called before the first frame update
     void Start()
@@ -22,7 +23,7 @@ public class LoginButton : MonoBehaviour
         this.email = inputEmail.text;
         this.password = inputPassword.text;
         Debug.Log(email + " " + password);
-        UserManagement.LoginWithEmailAddress(email, password);
+        UserManagement.LoginWithEmailAddress(email, password, error);
     }
 
     public string getEmail() {

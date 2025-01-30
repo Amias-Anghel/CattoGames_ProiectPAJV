@@ -11,6 +11,7 @@ public class ShowUserDetails : MonoBehaviour
     private string avatarID;
     public TextMeshProUGUI usernameDisplay;
     public GameObject avatarDisplay;
+    public Image background;
     public SpriteManager sm;
 
 
@@ -40,7 +41,7 @@ public class ShowUserDetails : MonoBehaviour
 
     void setUserAvatar() {
         avatarDisplay.GetComponent<Image>().sprite = sm.getSelectedAvatar().profileSprite;
-      
+        background.sprite = sm.getSelectedAvatar().backgroundSprite;
     }
 
     public void updateData(){

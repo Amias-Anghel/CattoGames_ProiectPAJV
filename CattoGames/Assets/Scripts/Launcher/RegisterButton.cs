@@ -9,6 +9,7 @@ public class RegisterButton : MonoBehaviour
     public TMP_InputField inputEmail;
     public TMP_InputField inputPassword;
     public TMP_InputField inputUsername;
+    public GameObject error;
 
     private string email;
     private string password;
@@ -24,7 +25,7 @@ public class RegisterButton : MonoBehaviour
         this.password = inputPassword.text;
         this.username = inputUsername.text;
         Debug.Log("New User: " + username + " " + email + " " + password);
-        UserManagement.Register(email, password, username);
+        UserManagement.Register(email, password, username, error);
     }
 
     public string getEmail() {
@@ -38,7 +39,6 @@ public class RegisterButton : MonoBehaviour
     public string getUsername() {
         return this.username;
     }
-
    
     // Update is called once per frame
     void Update()
