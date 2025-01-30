@@ -1,5 +1,4 @@
 using Fusion;
-using Fusion.Addons.Physics;
 using UnityEngine;
 
 public class PlayerSpawnerPlane : NetworkBehaviour, IPlayerJoined, IPlayerLeft

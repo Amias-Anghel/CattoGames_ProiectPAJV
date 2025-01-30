@@ -1,5 +1,5 @@
 using Fusion;
-using UnityEngine;
+
 public class Collectable : NetworkBehaviour
 {
     [Networked] private NetworkBool wasCollected { get; set; }

@@ -1,13 +1,9 @@
-using System.Collections;
+
 using System.Collections.Generic;
 using PlayFab;
 using PlayFab.ClientModels;
 using TMPro;
-using Unity.VisualScripting;
-using UnityEditorInternal;
 using UnityEngine;
-using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 public static class UserManagement
 {

@@ -1,12 +1,8 @@
-using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using Fusion;
-using Fusion.Sockets;
-using System;
-using WebSocketSharp;
 
 public class LobbySelection : MonoBehaviour
 {
@@ -136,7 +132,7 @@ public class LobbySelection : MonoBehaviour
 
     public async void JoinPrivateSession(string sessionName)
     {
-        if (sessionName.IsNullOrEmpty()) {
+        if (sessionName == null || sessionName == string.Empty) {
             JoinRandomPublicSession();
         }
 
@@ -149,7 +145,7 @@ public class LobbySelection : MonoBehaviour
 
     public async void CreateSession(string sessionName, bool isPrivate)
     {
-        if (sessionName.IsNullOrEmpty()) {
+        if (sessionName == null || sessionName == string.Empty) {
             sessionName = GetRandomRoomName();
         }
 

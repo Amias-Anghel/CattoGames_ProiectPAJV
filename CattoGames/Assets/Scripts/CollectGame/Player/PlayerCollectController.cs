@@ -1,11 +1,8 @@
-using System;
-using System.Collections;
+
 using System.Collections.Generic;
 using Fusion;
 using Fusion.LagCompensation;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 public class PlayerCollectController : NetworkBehaviour
 {

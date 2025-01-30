@@ -4,7 +4,6 @@ using System.Linq;
 using Fusion;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 public class GameStateControllerPlane : NetworkBehaviour
 {
     enum GameState
