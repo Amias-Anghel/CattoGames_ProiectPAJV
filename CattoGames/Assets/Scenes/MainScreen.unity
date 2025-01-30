@@ -317,6 +317,21 @@ MonoBehaviour:
     avatarSprite: {fileID: 21300000, guid: 2f43e460dca15204d97de70d885e3982, type: 3}
     planeSprite: {fileID: 21300000, guid: 77352f52694431b49a783bab8a6240ad, type: 3}
     backgroundSprite: {fileID: 21300000, guid: 1fe0ea01f857fbd44a069846a0fc1fd3, type: 3}
+  - ID: 6584
+    profileSprite: {fileID: 21300000, guid: b7ec32c04fc611e499698c113f3fe069, type: 3}
+    avatarSprite: {fileID: 21300000, guid: 9985fe268858fb8458c08bd359c822e6, type: 3}
+    planeSprite: {fileID: 21300000, guid: 8c3eef92a7496df46b919049114c47ad, type: 3}
+    backgroundSprite: {fileID: 21300000, guid: 73dde2c0a00282944b5454eacc1b2bd5, type: 3}
+  - ID: 7843
+    profileSprite: {fileID: 21300000, guid: 0b23c4dc8d3804949ad2746c3fb57a54, type: 3}
+    avatarSprite: {fileID: 21300000, guid: 8c255efb15812dd479d89f1df80e9a0f, type: 3}
+    planeSprite: {fileID: 21300000, guid: ba9aa97943b9b714e87d02cddc49ada6, type: 3}
+    backgroundSprite: {fileID: 21300000, guid: 911e53d7e2e7638468dff84206b5cad9, type: 3}
+  - ID: 8931
+    profileSprite: {fileID: 21300000, guid: 3792732e0f2e0a34caf1a538ba16b21a, type: 3}
+    avatarSprite: {fileID: 21300000, guid: 4663aad427e92f84ba154f53674b4e8f, type: 3}
+    planeSprite: {fileID: 21300000, guid: 83262afce148efe47b13a2b2d882d881, type: 3}
+    backgroundSprite: {fileID: 21300000, guid: 299c330c19f85c7449d129d43298481c, type: 3}
 --- !u!4 &123300978
 Transform:
   m_ObjectHideFlags: 0
