@@ -39,6 +39,7 @@ public class PlayerDataNetworkedPlane : NetworkBehaviour
 
         _changeDetector = GetChangeDetector(ChangeDetector.Source.SimulationState);
         UpdateDisplayName(NickName.ToString());
+        UpdatePlayerVisual(AvatarId.ToString());
     }
     
     public override void Render()

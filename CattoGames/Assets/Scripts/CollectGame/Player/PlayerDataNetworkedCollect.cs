@@ -49,7 +49,7 @@ public class PlayerDataNetworkedCollect : NetworkBehaviour
     
         _overviewPanel.UpdateNickName(Object.InputAuthority, NickName.ToString());
         _overviewPanel.UpdateScore(Object.InputAuthority, Score);
-        _overviewPanel.UpdateAvatar(Object.InputAuthority, AvatarId.ToString());
+        UpdatePlayerVisual(AvatarId.ToString());
 
         _changeDetector = GetChangeDetector(ChangeDetector.Source.SimulationState);
     }
@@ -70,7 +70,7 @@ public class PlayerDataNetworkedCollect : NetworkBehaviour
                     life.value = Life;
                     break;
                 case nameof(AvatarId):
-                    _overviewPanel.UpdateAvatar(Object.InputAuthority, AvatarId.ToString());
+                    UpdatePlayerVisual(AvatarId.ToString());
                     break;
             }
         }
